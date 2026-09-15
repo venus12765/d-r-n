@@ -477,7 +477,6 @@
             margin-top: 25px;
         }
 
-        /* استایل اختصاصی پلیر و دکمه‌های ویدیو */
         .video-teaser-card {
             width: 100%;
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(15, 23, 42, 0.8));
@@ -485,35 +484,6 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .video-embed-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* نسبت ابعاد 16:9 */
-            height: 0;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .video-embed-container iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: 0;
-        }
-
-        .video-action-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
         }
 
         .story-box {
@@ -758,11 +728,11 @@
 
             <div class="title-panel shine-effect">
                 <h1>دانش راه نجات</h1>
-                <img src="/assets/icons/profile.jpg" alt="پروفایل" class="header-profile-img">
+                <img src="profile.jpg" alt="پروفایل" class="header-profile-img">
             </div>
 
             <div class="home-panel" id="homePanel">
-                <img src="/assets/icons/profile.jpg" alt="پروفایل" class="panel-profile-img">
+                <img src="profile.jpg" alt="پروفایل" class="panel-profile-img">
                 
                 <div class="panel-options">
                     <button class="menu-btn" onclick="toggleTheme()">
@@ -789,19 +759,19 @@
                 <div class="hero-section">
                     <div class="character-wrapper">
                         <div class="floating-bulb" style="top: -30px;">💡</div>
-                        <img src="/assets/images/Picture1.jpg" alt="هوشا" class="side-character flipped">
+                        <img src="Picture1.jpg" alt="هوشا" class="side-character flipped">
                     </div>
 
                     <!-- اسلایدر چرخشی عکس‌ها -->
                     <div class="character-card img-shine-container" id="heroSlider">
-                        <img src="/assets/images/Gemini_Generated_Image_lw9e78lw9e78lw9e.jfif" class="slide-img active" alt="عکس ۱ دانش راه نجات">
-                        <img src="/assets/images/Gemini_Generated_Image_ga5f6uga5f6uga5f.jfif" class="slide-img" alt="عکس ۲ دانش راه نجات">
-                        <img src="/assets/images/Gemini_Generated_Image_xs7cpbxs7cpbxs7c.jfif" class="slide-img" alt="عکس ۳ دانش راه نجات">
+                        <img src="Gemini_Generated_Image_lw9e78lw9e78lw9e.jfif" class="slide-img active" alt="عکس ۱ دانش راه نجات">
+                        <img src="Gemini_Generated_Image_ga5f6uga5f6uga5f.jfif" class="slide-img" alt="عکس ۲ دانش راه نجات">
+                        <img src="Gemini_Generated_Image_xs7cpbxs7cpbxs7c.jfif" class="slide-img" alt="عکس ۳ دانش راه نجات">
                     </div>
 
                     <div class="character-wrapper">
                         <div class="floating-bulb" style="top: -30px;">💡</div>
-                        <img src="/assets/images/Picture2.jpg" alt="کوشا" class="side-character">
+                        <img src="Picture2.jpg" alt="کوشا" class="side-character">
                     </div>
                 </div>
 
@@ -816,7 +786,7 @@
         <div id="downloadPage" class="page-section hidden-page">
             <div class="download-page-header">
                 <div class="game-app-icon-wrapper img-shine-container">
-                    <img src="/assets/images/kk.JPG" alt="کاور بازی">
+                    <img src="kk.JPG" alt="کاور بازی">
                 </div>
                 <h2 class="game-title-main">دانش راه نجات</h2>
                 <h3 class="game-subtitle">هوشا و کوشا</h3>
@@ -840,27 +810,18 @@
             <div class="download-details-section">
                 <h3 style="color: var(--yellow-pastel); text-align: center; margin-top: 10px;">📸 تصاویر بازی</h3>
                 <div class="modal-gallery">
-                    <img src="/assets/screenshots/img1.jpg" onclick="openLightbox('/assets/screenshots/img1.jpg')">
-                    <img src="/assets/screenshots/img2.jpg" onclick="openLightbox('/assets/screenshots/img2.jpg')">
-                    <img src="/assets/screenshots/img3.jpg" onclick="openLightbox('/assets/screenshots/img3.jpg')">
-                    <img src="/assets/screenshots/img4.jpg" onclick="openLightbox('/assets/screenshots/img4.jpg')">
-                    <img src="/assets/screenshots/img5.jpg" onclick="openLightbox('/assets/screenshots/img5.jpg')">
-                    <img src="/assets/screenshots/img6.jpg" onclick="openLightbox('/assets/screenshots/img6.jpg')">
-                    <img src="/assets/screenshots/img7.jpg" onclick="openLightbox('/assets/screenshots/img7.jpg')">
+                    <img src="img1.jpg" onclick="openLightbox('img1.jpg')">
+                    <img src="img2.jpg" onclick="openLightbox('img2.jpg')">
+                    <img src="img3.jpg" onclick="openLightbox('img3.jpg')">
+                    <img src="img4.jpg" onclick="openLightbox('img4.jpg')">
+                    <img src="img5.jpg" onclick="openLightbox('img5.jpg')">
+                    <img src="img6.jpg" onclick="openLightbox('img6.jpg')">
+                    <img src="img7.jpg" onclick="openLightbox('img7.jpg')">
                 </div>
 
-                <!-- بخش پخش و دانلود آنلاین ویدیو -->
                 <div class="video-teaser-card shine-effect">
-                    <p style="color: var(--red-pastel); font-weight: bold;">🎬 تیزر معرفی بازی (پخش آنلاین)</p>
-                    
-                    <div class="video-embed-container">
-                        <iframe src="https://www.aparat.com/video/video/embed/videohash/rvn6c75/vt/frame" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-                    </div>
-
-                    <div class="video-action-buttons">
-                        <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel);">مشاهده در آپارات</a>
-                        <a href="https://www.aparat.com/api/fa/v1/video/video/download/videohash/rvn6c75" target="_blank" class="menu-btn" style="background: var(--yellow-pastel); color: #0f172a;">📥 دانلود ویدیو</a>
-                    </div>
+                    <p style="color: var(--red-pastel); font-weight: bold; margin-bottom: 10px;">🎬 تماشای ویدیو و تیزر معرفی بازی</p>
+                    <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel); display: inline-flex;">مشاهده تیزر در آپارات</a>
                 </div>
 
                 <div class="story-box shine-effect">
@@ -869,7 +830,7 @@
                 </div>
             </div>
 
-            <!-- لینک‌های دانلود -->
+            <!-- لینک‌های دانلود اصلاح شده -->
             <div class="download-action-btns">
                 <a href="https://drive.google.com/file/d/1xYTb0qVJ76HIKgJRUHrmByco0n0joRsV/view?usp=drive_link" target="_blank" class="btn-install btn-android shine-effect">
                     <span>🤖</span> <span>نصب نسخه اندروید</span>
@@ -889,27 +850,18 @@
             <h2 style="color: var(--yellow-pastel); text-align: center;">🎮 درباره بازی دانش: راه نجات</h2>
 
             <div class="modal-gallery">
-                <img src="/assets/screenshots/img1.jpg" onclick="openLightbox('/assets/screenshots/img1.jpg')">
-                <img src="/assets/screenshots/img2.jpg" onclick="openLightbox('/assets/screenshots/img2.jpg')">
-                <img src="/assets/screenshots/img3.jpg" onclick="openLightbox('/assets/screenshots/img3.jpg')">
-                <img src="/assets/screenshots/img4.jpg" onclick="openLightbox('/assets/screenshots/img4.jpg')">
-                <img src="/assets/screenshots/img5.jpg" onclick="openLightbox('/assets/screenshots/img5.jpg')">
-                <img src="/assets/screenshots/img6.jpg" onclick="openLightbox('/assets/screenshots/img6.jpg')">
-                <img src="/assets/screenshots/img7.jpg" onclick="openLightbox('/assets/screenshots/img7.jpg')">
+                <img src="img1.jpg" onclick="openLightbox('img1.jpg')">
+                <img src="img2.jpg" onclick="openLightbox('img2.jpg')">
+                <img src="img3.jpg" onclick="openLightbox('img3.jpg')">
+                <img src="img4.jpg" onclick="openLightbox('img4.jpg')">
+                <img src="img5.jpg" onclick="openLightbox('img5.jpg')">
+                <img src="img6.jpg" onclick="openLightbox('img6.jpg')">
+                <img src="img7.jpg" onclick="openLightbox('img7.jpg')">
             </div>
 
-            <!-- بخش ویدیو درون مدال -->
             <div class="video-teaser-card shine-effect">
-                <p style="color: var(--red-pastel); font-weight: bold;">🎬 تماشای آنلاین تیزر معرفی</p>
-
-                <div class="video-embed-container">
-                    <iframe src="https://www.aparat.com/video/video/embed/videohash/rvn6c75/vt/frame" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-                </div>
-
-                <div class="video-action-buttons">
-                    <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel);">مشاهده در آپارات</a>
-                    <a href="https://www.aparat.com/api/fa/v1/video/video/download/videohash/rvn6c75" target="_blank" class="menu-btn" style="background: var(--yellow-pastel); color: #0f172a;">📥 دانلود ویدیو</a>
-                </div>
+                <p style="color: var(--red-pastel); font-weight: bold; margin-bottom: 10px;">🎬 تماشای ویدیو و تیزر معرفی بازی</p>
+                <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel); display: inline-flex;">مشاهده تیزر در آپارات</a>
             </div>
 
             <div class="story-box shine-effect">
@@ -930,7 +882,7 @@
             </p>
 
             <div class="studio-branding">
-                <img src="/assets/icons/Picture3.jpg" alt="Studio Logo" class="studio-logo shine-effect">
+                <img src="Picture3.jpg" alt="Studio Logo" class="studio-logo shine-effect">
                 <span class="studio-name">Studio VIRA</span>
             </div>
         </div>
@@ -976,11 +928,13 @@
     <script>
         AOS.init();
 
+        // کنترل منوی کشویی
         function toggleHomePanel() {
             const panel = document.getElementById('homePanel');
             panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
         }
 
+        // تغییر تم سایت (دارک / لایت)
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const icon = document.getElementById('themeIcon');
@@ -994,6 +948,7 @@
             }
         }
 
+        // سوئیچ بین صفحات
         function switchToDownloadPage() {
             document.getElementById('mainPage').classList.add('hidden-page');
             document.getElementById('downloadPage').classList.remove('hidden-page');
@@ -1006,6 +961,7 @@
             document.getElementById('homePanel').style.display = 'none';
         }
 
+        // کنترل اسلایدر عکس‌ها
         let slideIndex = 0;
         const slides = document.querySelectorAll('#heroSlider .slide-img');
         
@@ -1017,6 +973,7 @@
         }
         setInterval(rotateSlides, 5000);
 
+        // کنترل پاپ‌آپ مدال درباره بازی
         function openGameModal() {
             document.getElementById('gameModal').style.display = 'flex';
         }
@@ -1031,6 +988,7 @@
             }
         }
 
+        // کنترل لایت‌باکس تصاویر
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
