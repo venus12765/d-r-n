@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دانش راه نجات - هوشا و کوشا</title>
+    <meta name="description" content="سایت پشتیبانی بازی جذاب هوشا و کوشا">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <style>
         :root {
+            --green-pastel: #bbf7d0;
+            --pink-pastel: #fbcfe8;
+            --blue-pastel: #bfdbfe;
+            --yellow-pastel: #fef08a;
+            --red-pastel: #fca5a5;
+            --purple-pastel: #c084fc;
             --bg-color: #0f172a;
             --card-bg: rgba(30, 41, 59, 0.95);
             --text-color: #ffffff;
             --border-color: #bbf7d0;
-            --yellow-pastel: #fef08a;
-            --pink-pastel: #fbcfe8;
-            --red-pastel: #fca5a5;
+            --shine-color: rgba(255, 255, 255, 0.8);
+        }
+
+        body.light-theme {
+            --bg-color: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #0f172a;
+            --border-color: #3b82f6;
+            --shine-color: rgba(255, 215, 0, 0.9);
         }
 
         * {
@@ -22,6 +36,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         body {
@@ -32,17 +47,77 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .floating-math {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 1;
+            filter: drop-shadow(0 0 10px rgba(254, 240, 138, 0.4));
+            animation: floatMath 4.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatMath {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            50% { transform: translateY(-20px) rotate(12deg) scale(1.1); }
+            100% { transform: translateY(12px) rotate(-12deg) scale(0.95); }
+        }
+
+        .floating-bulb {
+            position: absolute;
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 15px var(--yellow-pastel));
+            animation: bulbSwing 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bulbSwing {
+            0% { transform: rotate(-12deg) scale(1); filter: drop-shadow(0 0 10px var(--yellow-pastel)); }
+            100% { transform: rotate(12deg) scale(1.15); filter: drop-shadow(0 0 25px var(--yellow-pastel)); }
+        }
+
+        .img-shine-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .img-shine-container::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(60deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+            transform: rotate(30deg);
+            animation: lightShineAlways 3.5s infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes lightShineAlways {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            30% { transform: translateX(100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
         }
 
         .site-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1200px;
+            min-height: 85vh;
             border: 2px solid var(--border-color);
             border-radius: 24px;
+            box-shadow: 0 0 20px rgba(187, 247, 208, 0.3);
+            position: relative;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
+            z-index: 2;
         }
 
         header {
@@ -50,162 +125,359 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+            gap: 15px;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            flex-shrink: 0;
+        }
+
+        .menu-icon div {
+            width: 32px;
+            height: 4px;
+            background-color: var(--border-color);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--border-color);
         }
 
         .title-panel {
-            background: linear-gradient(90deg, var(--pink-pastel), #fff);
-            padding: 8px 20px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--pink-pastel) 0%, rgba(255,255,255,0.85) 50%, var(--blue-pastel) 100%);
+            padding: 6px 15px 6px 25px;
             border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-panel h1 {
             color: #1e293b;
-            font-weight: bold;
-        }
-
-        /* گالری تصاویر شبکه ای و بزرگ */
-        .gallery-section {
-            width: 100%;
-            margin: 20px 0;
-        }
-
-        .gallery-title {
-            color: var(--yellow-pastel);
-            text-align: center;
             font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-weight: 800;
+            margin: 0 auto;
         }
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-            width: 100%;
-        }
-
-        .game-screenshot {
-            width: 100%;
-            height: 160px;
+        .header-profile-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #fff;
             object-fit: cover;
-            border-radius: 16px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        }
+
+        .home-panel {
+            display: none;
+            position: absolute;
+            top: 65px;
+            right: 10px;
+            width: 280px;
+            background: var(--card-bg);
             border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            text-align: center;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+
+        .panel-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .menu-btn {
+            background-color: var(--border-color);
+            color: #0f172a;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.2s;
+            text-decoration: none;
         }
 
-        .game-screenshot:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 15px var(--yellow-pastel);
-        }
+        .menu-btn:hover { transform: scale(1.03); }
 
-        /* کادر بهینه و جمع وجور ویدیو */
-        .video-section {
+        .page-section {
             width: 100%;
-            max-width: 480px;
-            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hidden-page { display: none !important; }
+
+        .character-title {
+            font-size: 2.3rem;
+            color: var(--pink-pastel);
+            text-shadow: 0 0 10px rgba(251, 207, 232, 0.5);
+            margin: 15px 0;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .character-card {
+            width: 100%;
+            max-width: 550px;
+            height: 350px;
+            border-radius: 24px;
+            border: 4px solid var(--yellow-pastel);
+            box-shadow: 0 0 30px rgba(254, 240, 138, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .yellow-about-btn {
+            background: linear-gradient(90deg, #fef08a, #fde047);
+            color: #0f172a;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 0 20px rgba(254, 240, 138, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .yellow-about-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px rgba(254, 240, 138, 0.9);
+        }
+
+        .download-page-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .game-app-icon-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 32px;
+            border: 3px solid var(--yellow-pastel);
+            box-shadow: 0 0 25px rgba(254, 240, 138, 0.5);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .game-app-icon-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-title-main {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--yellow-pastel);
+        }
+
+        .game-subtitle {
+            font-size: 1.3rem;
+            color: var(--pink-pastel);
+            margin-top: 4px;
+        }
+
+        /* ویدیو بهینه و کوچک‌تر شده */
+        .video-teaser-card {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(15, 23, 42, 0.8));
             border: 2px dashed var(--red-pastel);
             border-radius: 20px;
             padding: 15px;
-            margin: 25px 0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto;
         }
 
-        .video-container {
+        .video-embed-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
             height: 0;
             border-radius: 12px;
             overflow: hidden;
-            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .video-container iframe {
+        .video-embed-container iframe {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             border: 0;
         }
 
-        .btn-group {
+        .download-action-btns {
             display: flex;
-            gap: 10px;
+            flex-direction: row;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-top: 12px;
+            gap: 20px;
+            width: 100%;
+            max-width: 750px;
+            margin-top: 35px;
+            direction: rtl;
         }
 
-        .btn-action {
-            padding: 8px 16px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .btn-download { background: var(--yellow-pastel); color: #0f172a; }
-        .btn-aparat { background: var(--red-pastel); color: #fff; }
-
-        /* لایت باکس بزرگنمایی عکس */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 999;
-            justify-content: center;
+        .btn-install {
+            flex: 1 1 300px;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px;
+            border-radius: 18px;
+            font-size: 1.25rem;
+            font-weight: 900;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: 12px;
-            border: 3px solid var(--yellow-pastel);
-        }
+        .btn-android { background: linear-gradient(90deg, #22c55e, #10b981); color: #fff; }
+        .btn-windows { background: linear-gradient(90deg, #6366f1, #8b5cf6); color: #fff; }
     </style>
 </head>
 <body>
 
     <div class="site-container">
         <header>
-            <div class="title-panel">بازی دانش: راه نجات</div>
+            <div class="menu-icon" onclick="toggleHomePanel()">
+                <div></div><div></div><div></div>
+            </div>
+
+            <div class="title-panel">
+                <h1>دانش راه نجات</h1>
+                <img src="https://static.cdn.asset.aparat.cloud/avt/72996585-6436-l__2490.jpg" alt="پروفایل" class="header-profile-img">
+            </div>
+
+            <div class="home-panel" id="homePanel">
+                <div class="panel-options">
+                    <button class="menu-btn" onclick="switchToDownloadPage()">📥 اطلاعات دانلود</button>
+                    <button class="menu-btn" onclick="switchToHomePage()">🏠 صفحه اصلی</button>
+                </div>
+            </div>
         </header>
 
-        <!-- بخش تصاویر با ابعاد بزرگ و واضح -->
-        <div class="gallery-section">
-            <h3 class="gallery-title">📸 تصاویر بازی (برای بزرگنمایی کلیک کنید)</h3>
-            <div class="image-grid">
-                <img src="/assets/screenshots/img1.jpg" class="game-screenshot" onclick="openFullImage(this.src)" alt="تصویر ۱">
-                <img src="/assets/screenshots/img2.jpg" class="game-screenshot" onclick="openFullImage(this.src)" alt="تصویر ۲">
-                <img src="/assets/screenshots/img3.jpg" class="game-screenshot" onclick="openFullImage(this.src)" alt="تصویر ۳">
-                <img src="/assets/screenshots/img4.jpg" class="game-screenshot" onclick="openFullImage(this.src)" alt="تصویر ۴">
+        <!-- صفحه اصلی -->
+        <div id="mainPage" class="page-section">
+            <h2 class="character-title">هوشا و کوشا</h2>
+            
+            <div class="hero-section">
+                <div class="character-card img-shine-container">
+                    <img src="https://static.cdn.asset.aparat.cloud/avt/72996585-6436-l__2490.jpg" alt="کاور اصلی دانش راه نجات">
+                </div>
             </div>
+
+            <button class="yellow-about-btn" onclick="switchToDownloadPage()">🎮 درباره و دانلود بازی</button>
         </div>
 
-        <!-- بخش کادر ویدیو بدون اشغال فضای عکس‌ها -->
-        <div class="video-section">
-            <p style="color: var(--red-pastel); font-weight: bold;">🎬 تیزر معرفی بازی</p>
-            <div class="video-container">
-                <iframe src="https://www.aparat.com/video/video/embed/videohash/rvn6c75/vt/frame" allowfullscreen="true"></iframe>
+        <!-- صفحه دانلود و پخش ویدیو -->
+        <div id="downloadPage" class="page-section hidden-page">
+            <div class="download-page-header">
+                <div class="game-app-icon-wrapper img-shine-container">
+                    <img src="https://myket.ir/asset-files/icons/xlarge/cded119c-df36-4d5a-9b2a-f5a18b46d195.png" alt="کاور بازی">
+                </div>
+                <h2 class="game-title-main">دانش راه نجات</h2>
+                <h3 class="game-subtitle">هوشا و کوشا</h3>
             </div>
-            <div class="btn-group">
-                <a href="https://aparat.com/v/rvn6c75" target="_blank" class="btn-action btn-aparat">مشاهده در آپارات</a>
-                <a href="https://www.aparat.com/api/fa/v1/video/video/download/videohash/rvn6c75" target="_blank" class="btn-action btn-download">📥 دانلود ویدیو</a>
+
+            <br>
+
+            <!-- بخش ویدیو با سایز کوچک و استاندارد -->
+            <div class="video-teaser-card">
+                <p style="color: var(--red-pastel); font-weight: bold;">🎬 تیزر معرفی بازی</p>
+                
+                <div class="video-embed-container">
+                    <iframe src="https://www.aparat.com/video/video/embed/videohash/rvn6c75/vt/frame" allowfullscreen="true"></iframe>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel);">آپارات</a>
+                    <a href="https://www.aparat.com/api/fa/v1/video/video/download/videohash/rvn6c75" target="_blank" class="menu-btn" style="background: var(--yellow-pastel); color: #0f172a;">📥 دانلود ویدیو</a>
+                </div>
+            </div>
+
+            <!-- لینک‌های دانلود -->
+            <div class="download-action-btns">
+                <a href="https://drive.google.com/file/d/1xYTb0qVJ76HIKgJRUHrmByco0n0joRsV/view?usp=drive_link" target="_blank" class="btn-install btn-android">
+                    <span>🤖</span> <span>نصب نسخه اندروید</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1DGEQBErLlNEKjmknM5A6E8BnKaCM9ZYR/view?usp=drive_link" target="_blank" class="btn-install btn-windows">
+                    <span>💻</span> <span>نصب نسخه ویندوز</span>
+                </a>
             </div>
         </div>
-    </div>
-
-    <!-- لایت‌باکس عکس -->
-    <div class="lightbox" id="lightbox" onclick="closeFullImage()">
-        <img id="lightboxImg" src="" alt="نمایش بزرگ عکس">
     </div>
 
     <script>
-        function openFullImage(src) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
+        function toggleHomePanel() {
+            const panel = document.getElementById('homePanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
         }
 
-        function closeFullImage() {
-            document.getElementById('lightbox').style.display = 'none';
+        function switchToDownloadPage() {
+            document.getElementById('mainPage').classList.add('hidden-page');
+            document.getElementById('downloadPage').classList.remove('hidden-page');
+            document.getElementById('homePanel').style.display = 'none';
+        }
+
+        function switchToHomePage() {
+            document.getElementById('downloadPage').classList.add('hidden-page');
+            document.getElementById('mainPage').classList.remove('hidden-page');
+            document.getElementById('homePanel').style.display = 'none';
         }
     </script>
 </body>
