@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دانش راه نجات - هوشا و کوشا</title>
-    <discription>سایت پشتیبانی بازی جذاب هوشا و کوشا</discription>
-    <meta name="google-site-verification" content="TCLA54V1X1RnQRky_xktLfacqkPmMX16TaMY2lbquIg" />
+    <meta name="description" content="سایت پشتیبانی بازی جذاب هوشا و کوشا">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
@@ -306,7 +305,6 @@
             50% { transform: scaleX(-1) translateY(-12px); }
         }
 
-        /* اسلایدر چرخشی تصاویر با کادر زرد نورانی */
         .character-card {
             width: 320px;
             height: 420px;
@@ -332,7 +330,6 @@
             opacity: 1;
         }
 
-        /* دکمه زرد درباره بازی */
         .yellow-about-btn {
             background: linear-gradient(90deg, #fef08a, #fde047);
             color: #0f172a;
@@ -352,7 +349,6 @@
             box-shadow: 0 0 30px rgba(254, 240, 138, 0.9);
         }
 
-        /* ===== مدال (پنجره پاپ‌آپ) درباره بازی ===== */
         .game-modal {
             display: none;
             position: fixed;
@@ -412,7 +408,6 @@
 
         .modal-gallery img:hover { transform: scale(1.05); }
 
-        /* دانلود */
         .download-page-header {
             display: flex;
             flex-direction: column;
@@ -482,6 +477,7 @@
             margin-top: 25px;
         }
 
+        /* استایل اختصاصی پلیر و دکمه‌های ویدیو */
         .video-teaser-card {
             width: 100%;
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(15, 23, 42, 0.8));
@@ -489,6 +485,35 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .video-embed-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* نسبت ابعاد 16:9 */
+            height: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .video-embed-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        .video-action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
         }
 
         .story-box {
@@ -503,18 +528,25 @@
 
         .download-action-btns {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             width: 100%;
-            max-width: 700px;
+            max-width: 750px;
             margin-top: 35px;
+            direction: rtl;
         }
 
         .btn-install {
-            width: 100%;
+            flex: 1 1 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             padding: 18px;
             border-radius: 18px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 900;
             border: none;
             cursor: pointer;
@@ -522,6 +554,11 @@
             text-decoration: none;
             text-align: center;
             transition: all 0.3s ease;
+            direction: rtl;
+        }
+
+        .btn-install:hover {
+            transform: translateY(-4px);
         }
 
         .btn-android { background: linear-gradient(90deg, #22c55e, #10b981); color: #fff; }
@@ -586,7 +623,6 @@
             letter-spacing: 1px;
         }
 
-        /* بخش ارتباط با ما */
         .contact-us-section {
             width: 100%;
             max-width: 900px;
@@ -673,6 +709,7 @@
             z-index: 300;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
 
         .lightbox-img {
@@ -686,6 +723,7 @@
             .character-wrapper { width: 100px; height: 160px; }
             .character-card { width: 220px; height: 300px; }
             .social-item { flex-direction: column; gap: 8px; text-align: center; }
+            .btn-install { flex: 1 1 100%; }
         }
     </style>
 </head>
@@ -720,11 +758,11 @@
 
             <div class="title-panel shine-effect">
                 <h1>دانش راه نجات</h1>
-                <img src="profile.jpg" alt="پروفایل" class="header-profile-img">
+                <img src="/assets/icons/profile.jpg" alt="پروفایل" class="header-profile-img">
             </div>
 
             <div class="home-panel" id="homePanel">
-                <img src="profile.jpg" alt="پروفایل" class="panel-profile-img">
+                <img src="/assets/icons/profile.jpg" alt="پروفایل" class="panel-profile-img">
                 
                 <div class="panel-options">
                     <button class="menu-btn" onclick="toggleTheme()">
@@ -751,19 +789,19 @@
                 <div class="hero-section">
                     <div class="character-wrapper">
                         <div class="floating-bulb" style="top: -30px;">💡</div>
-                        <img src="Picture1.jpg" alt="هوشا" class="side-character flipped">
+                        <img src="/assets/images/Picture1.jpg" alt="هوشا" class="side-character flipped">
                     </div>
 
-                    <!-- اسلایدر چرخشی عکس‌ها (تغییر اتوماتیک هر ۵ ثانیه) -->
+                    <!-- اسلایدر چرخشی عکس‌ها -->
                     <div class="character-card img-shine-container" id="heroSlider">
-                        <img src="Gemini_Generated_Image_lw9e78lw9e78lw9e.jfif" class="slide-img active" alt="عکس ۱ دانش راه نجات">
-                        <img src="Gemini_Generated_Image_ga5f6uga5f6uga5f.jfif" class="slide-img" alt="عکس ۲ دانش راه نجات">
-                        <img src="Gemini_Generated_Image_xs7cpbxs7cpbxs7c.jfif" class="slide-img" alt="عکس ۳ دانش راه نجات">
+                        <img src="/assets/images/Gemini_Generated_Image_lw9e78lw9e78lw9e.jfif" class="slide-img active" alt="عکس ۱ دانش راه نجات">
+                        <img src="/assets/images/Gemini_Generated_Image_ga5f6uga5f6uga5f.jfif" class="slide-img" alt="عکس ۲ دانش راه نجات">
+                        <img src="/assets/images/Gemini_Generated_Image_xs7cpbxs7cpbxs7c.jfif" class="slide-img" alt="عکس ۳ دانش راه نجات">
                     </div>
 
                     <div class="character-wrapper">
                         <div class="floating-bulb" style="top: -30px;">💡</div>
-                        <img src="Picture2.jpg" alt="کوشا" class="side-character">
+                        <img src="/assets/images/Picture2.jpg" alt="کوشا" class="side-character">
                     </div>
                 </div>
 
@@ -777,9 +815,8 @@
         <!-- ================= صفحه اطلاعات دانلود ================= -->
         <div id="downloadPage" class="page-section hidden-page">
             <div class="download-page-header">
-                <!-- عکس کاور بازی با افکت برق متحرک -->
                 <div class="game-app-icon-wrapper img-shine-container">
-                    <img src="kk.JPG" alt="کاور بازی">
+                    <img src="/assets/images/kk.JPG" alt="کاور بازی">
                 </div>
                 <h2 class="game-title-main">دانش راه نجات</h2>
                 <h3 class="game-subtitle">هوشا و کوشا</h3>
@@ -800,22 +837,30 @@
                 </div>
             </div>
 
-            <!-- بخش عکس‌ها، تیزر و سناریو درون صفحه اطلاعات دانلود -->
             <div class="download-details-section">
                 <h3 style="color: var(--yellow-pastel); text-align: center; margin-top: 10px;">📸 تصاویر بازی</h3>
                 <div class="modal-gallery">
-                    <img src="img1.jpg" onclick="openLightbox('img1.jpg')">
-                    <img src="img2.jpg" onclick="openLightbox('img2.jpg')">
-                    <img src="img3.jpg" onclick="openLightbox('img3.jpg')">
-                    <img src="img4.jpg" onclick="openLightbox('img4.jpg')">
-                    <img src="img5.jpg" onclick="openLightbox('img5.jpg')">
-                    <img src="img6.jpg" onclick="openLightbox('img6.jpg')">
-                    <img src="img7.jpg" onclick="openLightbox('img7.jpg')">
+                    <img src="/assets/screenshots/img1.jpg" onclick="openLightbox('/assets/screenshots/img1.jpg')">
+                    <img src="/assets/screenshots/img2.jpg" onclick="openLightbox('/assets/screenshots/img2.jpg')">
+                    <img src="/assets/screenshots/img3.jpg" onclick="openLightbox('/assets/screenshots/img3.jpg')">
+                    <img src="/assets/screenshots/img4.jpg" onclick="openLightbox('/assets/screenshots/img4.jpg')">
+                    <img src="/assets/screenshots/img5.jpg" onclick="openLightbox('/assets/screenshots/img5.jpg')">
+                    <img src="/assets/screenshots/img6.jpg" onclick="openLightbox('/assets/screenshots/img6.jpg')">
+                    <img src="/assets/screenshots/img7.jpg" onclick="openLightbox('/assets/screenshots/img7.jpg')">
                 </div>
 
+                <!-- بخش پخش و دانلود آنلاین ویدیو -->
                 <div class="video-teaser-card shine-effect">
-                    <p style="color: var(--red-pastel); font-weight: bold; margin-bottom: 10px;">🎬 تماشای ویدیو و تیزر معرفی بازی</p>
-                    <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel); display: inline-flex;">مشاهده تیزر در آپارات</a>
+                    <p style="color: var(--red-pastel); font-weight: bold;">🎬 تیزر معرفی بازی (پخش آنلاین)</p>
+                    
+                    <div class="video-embed-container">
+                        <iframe src="https://www.aparat.com/video/video/embed/videohash/rvn6c75/vt/frame" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                    </div>
+
+                    <div class="video-action-buttons">
+                        <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel);">مشاهده در آپارات</a>
+                        <a href="https://www.aparat.com/api/fa/v1/video/video/download/videohash/rvn6c75" target="_blank" class="menu-btn" style="background: var(--yellow-pastel); color: #0f172a;">📥 دانلود ویدیو</a>
+                    </div>
                 </div>
 
                 <div class="story-box shine-effect">
@@ -824,9 +869,14 @@
                 </div>
             </div>
 
+            <!-- لینک‌های دانلود -->
             <div class="download-action-btns">
-                <a href="https://drive.google.com/file/d/1DGEQBErLlNEKjmknM5A6E8BnKaCM9ZYR/view?usp=drive_link" class="btn-install btn-android shine-effect">🤖 نصب نسخه اندروید</a>
-                <a href="https://drive.google.com/file/d/1xYTb0qVJ76HIKgJRUHrmByco0n0joRsV/view?usp=drive_link" class="btn-install btn-windows shine-effect">💻 نصب نسخه ویندوز</a>
+                <a href="https://drive.google.com/file/d/1xYTb0qVJ76HIKgJRUHrmByco0n0joRsV/view?usp=drive_link" target="_blank" class="btn-install btn-android shine-effect">
+                    <span>🤖</span> <span>نصب نسخه اندروید</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1DGEQBErLlNEKjmknM5A6E8BnKaCM9ZYR/view?usp=drive_link" target="_blank" class="btn-install btn-windows shine-effect">
+                    <span>💻</span> <span>نصب نسخه ویندوز</span>
+                </a>
             </div>
         </div>
 
@@ -838,24 +888,30 @@
             <span class="close-modal-btn" onclick="closeGameModal()">✖</span>
             <h2 style="color: var(--yellow-pastel); text-align: center;">🎮 درباره بازی دانش: راه نجات</h2>
 
-            <!-- گالری ۷ عکس درون مدال -->
             <div class="modal-gallery">
-                <img src="img1.jpg" onclick="openLightbox('img1.jpg')">
-                <img src="img2.jpg" onclick="openLightbox('img2.jpg')">
-                <img src="img3.jpg" onclick="openLightbox('img3.jpg')">
-                <img src="img4.jpg" onclick="openLightbox('img4.jpg')">
-                <img src="img5.jpg" onclick="openLightbox('img5.jpg')">
-                <img src="img6.jpg" onclick="openLightbox('img6.jpg')">
-                <img src="img7.jpg" onclick="openLightbox('img7.jpg')">
+                <img src="/assets/screenshots/img1.jpg" onclick="openLightbox('/assets/screenshots/img1.jpg')">
+                <img src="/assets/screenshots/img2.jpg" onclick="openLightbox('/assets/screenshots/img2.jpg')">
+                <img src="/assets/screenshots/img3.jpg" onclick="openLightbox('/assets/screenshots/img3.jpg')">
+                <img src="/assets/screenshots/img4.jpg" onclick="openLightbox('/assets/screenshots/img4.jpg')">
+                <img src="/assets/screenshots/img5.jpg" onclick="openLightbox('/assets/screenshots/img5.jpg')">
+                <img src="/assets/screenshots/img6.jpg" onclick="openLightbox('/assets/screenshots/img6.jpg')">
+                <img src="/assets/screenshots/img7.jpg" onclick="openLightbox('/assets/screenshots/img7.jpg')">
             </div>
 
-            <!-- لینک تیزر -->
+            <!-- بخش ویدیو درون مدال -->
             <div class="video-teaser-card shine-effect">
-                <p style="color: var(--red-pastel); font-weight: bold; margin-bottom: 10px;">🎬 تماشای ویدیو و تیزر معرفی بازی</p>
-                <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel); display: inline-flex;">مشاهده تیزر در آپارات</a>
+                <p style="color: var(--red-pastel); font-weight: bold;">🎬 تماشای آنلاین تیزر معرفی</p>
+
+                <div class="video-embed-container">
+                    <iframe src="https://www.aparat.com/video/video/embed/videohash/rvn6c75/vt/frame" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                </div>
+
+                <div class="video-action-buttons">
+                    <a href="https://aparat.com/v/rvn6c75" target="_blank" class="menu-btn" style="background: var(--red-pastel);">مشاهده در آپارات</a>
+                    <a href="https://www.aparat.com/api/fa/v1/video/video/download/videohash/rvn6c75" target="_blank" class="menu-btn" style="background: var(--yellow-pastel); color: #0f172a;">📥 دانلود ویدیو</a>
+                </div>
             </div>
 
-            <!-- سناریوی بازی -->
             <div class="story-box shine-effect">
                 <h4 style="color: var(--yellow-pastel); margin-bottom: 8px;">📖 سناریوی بازی:</h4>
                 <p>خونه هوشا و کوشا توی جنگ آسیب دیده! اونا برای فرار نیازه مسئله‌هایی رو حل کنن تا بتونن خارج شن .. تو قراره کمکشون کنی ! دست به کار شو ! قراره سرگرمی هم داشته باشی این بین 🌟</p>
@@ -874,7 +930,7 @@
             </p>
 
             <div class="studio-branding">
-                <img src="Picture3.jpg" alt="Studio Vahdati Logo" class="studio-logo shine-effect">
+                <img src="/assets/icons/Picture3.jpg" alt="Studio Logo" class="studio-logo shine-effect">
                 <span class="studio-name">Studio VIRA</span>
             </div>
         </div>
@@ -884,7 +940,6 @@
             <h2 class="contact-title">ارتباط با ما</h2>
 
             <div class="social-grid">
-                <!-- روبیکا -->
                 <div class="social-item">
                     <div class="social-app-info">
                         <img src="https://rubika.ir/favicon.ico" alt="Rubika" class="social-icon-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3670/3670051.png'">
@@ -893,7 +948,6 @@
                     <span class="social-id">@danesh_rah_nejat_v</span>
                 </div>
 
-                <!-- تلگرام -->
                 <div class="social-item">
                     <div class="social-app-info">
                         <img src="https://telegram.org/img/t_logo.png" alt="Telegram" class="social-icon-img">
@@ -902,7 +956,6 @@
                     <span class="social-id">@danesh_rah_nejat_v</span>
                 </div>
 
-                <!-- بله -->
                 <div class="social-item">
                     <div class="social-app-info">
                         <img src="https://bale.ai/favicon.ico" alt="Bale" class="social-icon-img" onerror="this.src='https://cdn-icons-png.flaticon.com/512/906/906377.png'">
@@ -912,37 +965,58 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- لایت باکس برای بزرگ‌نمایی عکس‌ها -->
+    <!-- لایت باکس تصاویر -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <img src="" class="lightbox-img" id="lightboxImg">
+        <img src="" alt="بزرگنمایی تصویر" class="lightbox-img" id="lightboxImg">
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init({ once: false, mirror: true });
-
-        /* جاوااسکریپت ورق خوردن (اسلایدر) خودکار عکس‌ها هر ۵ ثانیه */
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('#heroSlider .slide-img');
-
-        function autoRotateSlides() {
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            slides[currentSlideIndex].classList.add('active');
-        }
-
-        // تغییر تصویر هر ۵۰۰۰ میلی‌ثانیه (۵ ثانیه)
-        setInterval(autoRotateSlides, 5000);
+        AOS.init();
 
         function toggleHomePanel() {
             const panel = document.getElementById('homePanel');
-            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
         }
 
-        /* توابع باز و بستن پاپ‌آپ درباره بازی */
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const icon = document.getElementById('themeIcon');
+            const text = document.getElementById('themeText');
+            if (document.body.classList.contains('light-theme')) {
+                icon.textContent = '🌙';
+                text.textContent = 'تغییر به حالت شب';
+            } else {
+                icon.textContent = '☀️';
+                text.textContent = 'تغییر به حالت روز';
+            }
+        }
+
+        function switchToDownloadPage() {
+            document.getElementById('mainPage').classList.add('hidden-page');
+            document.getElementById('downloadPage').classList.remove('hidden-page');
+            document.getElementById('homePanel').style.display = 'none';
+        }
+
+        function switchToHomePage() {
+            document.getElementById('downloadPage').classList.add('hidden-page');
+            document.getElementById('mainPage').classList.remove('hidden-page');
+            document.getElementById('homePanel').style.display = 'none';
+        }
+
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('#heroSlider .slide-img');
+        
+        function rotateSlides() {
+            if (slides.length === 0) return;
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (slideIndex + 1) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }
+        setInterval(rotateSlides, 5000);
+
         function openGameModal() {
             document.getElementById('gameModal').style.display = 'flex';
         }
@@ -957,31 +1031,11 @@
             }
         }
 
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            
-            document.getElementById('themeIcon').innerText = isLight ? '🌙' : '☀️';
-            document.getElementById('themeText').innerText = isLight ? 'تغییر به حالت شب' : 'تغییر به حالت روز';
-        }
-
-        function switchToDownloadPage() {
-            document.getElementById('mainPage').classList.add('hidden-page');
-            document.getElementById('downloadPage').classList.remove('hidden-page');
-            toggleHomePanel();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function switchToHomePage() {
-            document.getElementById('downloadPage').classList.add('hidden-page');
-            document.getElementById('mainPage').classList.remove('hidden-page');
-            toggleHomePanel();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         function openLightbox(src) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
         }
 
         function closeLightbox() {
